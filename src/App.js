@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import DateJour from './component/date/date';
+import Horloge from './component/horloge/horloge';
+import {useState} from "react"
 
 function App() {
+
+  const [showTime, setShowTime] = useState(true)
+
+  const onClick = () => {
+    setShowTime(previous => !previous)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Exo Date</h1>
+      <button onClick={onClick}>Change</button>
+      {showTime ? (
+        <Horloge />
+      ) : (
+        <DateJour />
+      )}
     </div>
   );
 }
